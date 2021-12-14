@@ -1,0 +1,13 @@
+{
+  "action": "ActivityManagement",
+  "method": "getActivities",
+  "data": [
+    {
+      "startIndex": 0,
+      "pageSize": 100,
+      "searchPhrase": null
+    }
+  ],
+  "type": "rpc",
+  "tid": 3
+}

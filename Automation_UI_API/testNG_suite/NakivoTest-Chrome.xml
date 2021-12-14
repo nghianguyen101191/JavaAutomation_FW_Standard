@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="1">
+	<parameter name="nodeUrl" value="http://192.168.1.50:4444/wd/hub"/>
+	<parameter name="driverMode" value="local" />
+
+	<test name="Run On chrome-VMware">
+		<parameter name="browserType" value="chrome" />
+		<parameter name="backupType" value="ec2" />
+		<groups>
+			<run>
+				<include name="beta_ga_0108" />
+			</run>
+		</groups>
+		<classes>
+			<class name="test.backup.wrt.amazonec2backup.AmazonEc2BackupJob" />
+		</classes>
+	</test>
+
+
+
+</suite>

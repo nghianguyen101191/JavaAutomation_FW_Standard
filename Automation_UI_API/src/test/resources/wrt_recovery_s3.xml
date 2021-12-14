@@ -1,0 +1,78 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <parameter name="nodeUrl" value="${branch.nodeUrl}"/>
+    <parameter name="browserType" value="${branch.browser}"/>
+    <parameter name="appUrl" value="${branch.appUrl}"/>
+    <parameter name="browserVersion" value="${branch.browserVersion}"/>
+    <parameter name="nodeIp" value="${branch.nodeIp}"/>
+    <parameter name="installMode" value="${branch.installMode}"/>
+    <parameter name="platform" value="${branch.platform}"/>
+    <parameter name="host" value="${branch.host}"/>
+    <parameter name="username" value="${branch.username}"/>
+
+    <!--Static parameter-->
+    <parameter name="nodeUrl" value="http://10.10.20.1:4444/wd/hub"/>
+    <parameter name="driverMode" value="remote"/>
+    <parameter name="password" value="P@ssword123"/>
+    <parameter name="nodeUsername" value="administrator"/>
+    <parameter name="nodePassword" value="P@ssword123"/>
+    <parameter name="revertHost" value="10.10.15.103"/>
+    <parameter name="revertUsername" value="administrator"/>
+    <parameter name="revertPassword" value="P@ssword123"/>
+
+    <!--using for local test-->
+    <!--    <parameter name="browserType" value="chrome"/>
+        <parameter name="appUrl" value="https://10.10.20.21:4443/"/>
+        <parameter name="browserVersion" value="01"/>
+        <parameter name="nodeIp" value="10.10.20.1"/>
+        <parameter name="installMode" value="st"/>
+        <parameter name="platform" value="linux"/>
+        <parameter name="host" value="10.10.20.21"/>
+        <parameter name="username" value="root"/>-->
+
+    <!--  Below mentioned syntax is to add Listener for RetryListnereClass-->
+    <listeners>
+        <listener class-name="test.jobaction.RetryListenerClass"/>
+    </listeners>
+
+    <!--===================================== Config run test suite =================================================-->
+    <test thread-count="1" name="Run VMwareRecoveryFromBackupS3Job On chrome">
+        <parameter name="type" value="vmware"/>
+        <groups>
+            <run>
+                <include name="wrt_vmware_recover_s3"/>
+                <exclude name="exclude_jobs"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.recover.wrt.vmwarefullrecovery.vmrecoveryfrombackup.VMwareRecoveryS3Job"/>
+        </classes>
+    </test>
+
+    <!--HyperV recovery jobs-->
+    <test thread-count="1" name="Run HypervRecoveryFromBackupS3Job On chrome">
+        <parameter name="type" value="hyperv"/>
+        <groups>
+            <run>
+                <include name="wrt_hyperv_recover_s3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.recover.wrt.vmwarefullrecovery.vmrecoveryfrombackup.HypervRecoveryS3Job"/>
+        </classes>
+    </test>
+
+    <!--EC2 recovery jobs-->
+    <test thread-count="1" name="Run AmazonEc2RecoveryFromBackupS3Job On chrome">
+        <parameter name="type" value="ec2"/>
+        <groups>
+            <run>
+                <include name="wrt_ec2_recover_s3"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="test.recover.wrt.vmwarefullrecovery.vmrecoveryfrombackup.AmazonEc2RecoveryS3Job"/>
+        </classes>
+    </test>
+
+</suite>

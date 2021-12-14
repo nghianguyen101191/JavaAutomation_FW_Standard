@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <test thread-count="5" name="Run On chrome">
+        <groups>
+            <run>
+                <include name="demo" />
+            </run>
+        </groups>
+        <classes>
+            <class name="test.create.backup.api.VMwareBackupJobAPI" />
+        </classes>
+    </test>
+</suite>

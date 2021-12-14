@@ -1,0 +1,65 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+    <parameter name="nodeUrl" value="${branch.nodeUrl}"/>
+    <parameter name="browserType" value="${branch.browser}"/>
+    <parameter name="appUrl" value="${branch.appUrl}"/>
+    <parameter name="browserVersion" value="${branch.browserVersion}"/>
+    <parameter name="nodeIp" value="${branch.nodeIp}"/>
+    <parameter name="installMode" value="${branch.installMode}"/>
+    <parameter name="platform" value="${branch.platform}"/>
+    <parameter name="host" value="${branch.host}"/>
+    <parameter name="username" value="${branch.username}"/>
+
+    <!--Static parameter-->
+    <parameter name="nodeUrl" value="http://10.10.20.1:4444/wd/hub"/>
+    <parameter name="driverMode" value="local"/>
+    <parameter name="password" value="P@ssword123"/>
+    <parameter name="nodeUsername" value="administrator"/>
+    <parameter name="nodePassword" value="P@ssword123"/>
+    <parameter name="revertHost" value="10.10.15.103"/>
+    <parameter name="revertUsername" value="administrator"/>
+    <parameter name="revertPassword" value="P@ssword123"/>
+
+    <!--using for local test-->
+    <parameter name="nodeUrl" value="http://10.10.20.1:4444/wd/hub"/>
+    <parameter name="browserType" value="api"/>
+    <parameter name="appUrl" value="https://test-vanhanh.uat.shopee.vn/campaign/client/#/campaign-management"/>
+    <parameter name="browserVersion" value="20"/>
+    <parameter name="nodeIp" value="10.10.16.65"/>
+    <parameter name="installMode" value="st"/>
+    <parameter name="platform" value="linux"/>
+    <parameter name="host" value="10.10.16.135"/>
+    <parameter name="username" value="root"/>
+
+    <!--  Below mentioned syntax is to add Listener for RetryListnereClass-->
+    <!--<listeners>
+        <listener class-name="test.jobaction.RetryListenerClass"/>
+    </listeners>-->
+
+      <test thread-count="1" name="Create Campaign">
+          <groups>
+              <run>
+                  <include name="PostCreateNewCampaign"/>
+
+              </run>
+          </groups>
+          <classes>
+              <class name="api.test.campaignmanagement.ApiCreateCampaignJobs"/>
+          </classes>
+      </test>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</suite>

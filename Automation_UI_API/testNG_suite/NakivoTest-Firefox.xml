@@ -1,0 +1,32 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" thread-count="1">
+	<parameter name="nodeUrl" value="http://192.168.1.50:4444/wd/hub"/>
+	<parameter name="driverMode" value="remote" />
+
+	<test name="Run On Firefox-VMware">
+		<parameter name="browserType" value="firefox" />
+		<parameter name="backupType" value="vmware" />
+		<groups>
+			<run>
+				<include name="vmware" />
+			</run>
+		</groups>
+		<classes>
+			<class name="test.create.backup.VMwareBackupJob" />
+		</classes>
+	</test>
+
+	<test name="Run On Firefox-HyperV">
+		<parameter name="browserType" value="firefox" />
+		<parameter name="backupType" value="hyperv" />
+		<groups>
+			<run>
+				<include name="hyperv" />
+			</run>
+		</groups>
+		<classes>
+			<class name="test.create.backup.VMwareBackupJob" />
+		</classes>
+	</test>
+
+</suite>

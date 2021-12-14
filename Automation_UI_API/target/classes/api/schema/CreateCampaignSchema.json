@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "integer"
+    },
+    "msg": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "paging": {
+          "type": "object",
+          "properties": {
+            "total": {
+              "type": "integer"
+            },
+            "page": {
+              "type": "integer"
+            },
+            "pages": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "total",
+            "page",
+            "pages"
+          ]
+        },
+        "records": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "creator": {
+                  "type": "string"
+                },
+                "updater": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "created_at": {
+                  "type": "string"
+                },
+                "updated_at": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "name",
+                "description",
+                "creator",
+                "updater",
+                "enabled",
+                "created_at",
+                "updated_at"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "paging",
+        "records"
+      ]
+    }
+  },
+  "required": [
+    "code",
+    "msg",
+    "data"
+  ]
+}
